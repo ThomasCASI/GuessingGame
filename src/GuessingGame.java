@@ -5,18 +5,18 @@ public class GuessingGame {
         Random random = new Random();
         int randomNum = random.nextInt(100);
         Scanner sc = new Scanner(System.in);
-        int a = 0;
         int cnt = 0;
-        List<String> message = new LinkedList<>();
-        message.add("You got an impossibly good score!");
-        message.add("You did a good job!");
-        message.add("Try the divide and conquer strategy next time!");
+        List<String> messages = Arrays.asList(
+                "You got an impossibly good score!",
+                "You did a good job!",
+                "Try the divide and conquer strategy next time!"
+        );
 
-        while (a != randomNum) {
+        while (true) {
             cnt++;
-            a = sc.nextInt();
+            int a = sc.nextInt();
             if (a == randomNum) {
-                System.out.println(cnt <= 7 ? message.get(0) : cnt <= 10 ? message.get(1) : message.get(2));
+                System.out.println(messages.get(cnt <= 7 ? 0 : cnt <= 10 ? 1 : 2));
                 break;
             }
             System.out.println(a < randomNum ? "Too low" : "Too High");
